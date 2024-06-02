@@ -1,0 +1,8 @@
+name: BetterFire
+version: '${project.version}'
+main: code.blurone.betterfire.BetterFire
+api-version: '1.20'
+load: STARTUP
+authors: [BlurOne!]
+description: Plugin recreation of GM4's Better Fire datapack.
+website: https://github.com/BlurOne-GIT/Better-Fire
