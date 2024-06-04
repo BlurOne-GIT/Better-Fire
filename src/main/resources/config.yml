@@ -1,0 +1,4 @@
+# Chance for the fire arrow to be removed (in percentage)
+remove-arrow-chance: 100
+# Chance for the removed arrow to drop one flint (in percentage)
+drop-flint-chance: 80
