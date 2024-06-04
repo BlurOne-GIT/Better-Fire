@@ -59,7 +59,8 @@ class BetterFire : JavaPlugin(), Listener {
         arrow.remove()
     }
 
-    override fun onDisable() {
-        // Plugin shutdown logic
+    @EventHandler
+    private fun onEntityCombust(event: EntityCombustEvent) {
+        (event.entity as? Creeper)?.ignite()
     }
 }
