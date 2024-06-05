@@ -51,9 +51,9 @@ class BetterFire : JavaPlugin(), Listener {
             blockToLight.state
         }
 
-        if (arrow is Trident || Random.nextDouble() >= removeArrowChance) return
+        if (arrow is Trident || (Random.nextDouble() >= removeArrowChance && arrow.pickupStatus == AbstractArrow.PickupStatus.ALLOWED)) return
 
-        if (Random.nextDouble() < dropFlintChance)
+        if (Random.nextDouble() < dropFlintChance && arrow.pickupStatus == AbstractArrow.PickupStatus.ALLOWED)
             arrow.world.dropItemNaturally(arrow.location, ItemStack(Material.FLINT))
 
         arrow.remove()
