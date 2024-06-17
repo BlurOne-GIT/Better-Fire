@@ -10,7 +10,7 @@ import org.bukkit.entity.Creeper
 import org.bukkit.entity.Trident
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntityCombustEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
@@ -20,6 +20,7 @@ import kotlin.random.Random
 class BetterFire : JavaPlugin(), Listener {
     private val removeArrowChance = config.getDouble("remove-arrow-chance", 100.0) * 0.01
     private val dropFlintChance = config.getDouble("drop-flint-chance", 80.0) * 0.01
+    private val creeperIgnitionHealth = config.getDouble("creeper-ignition-health", 0.0)
 
     override fun onEnable() {
         // Plugin startup logic
@@ -60,7 +61,9 @@ class BetterFire : JavaPlugin(), Listener {
     }
 
     @EventHandler
-    private fun onEntityCombust(event: EntityCombustEvent) {
-        (event.entity as? Creeper)?.ignite()
+    private fun onEntityDamage(event: EntityDamageEvent) {
+        val creeper = event.entity as? Creeper ?: return
+        if (creeper.health <= creeperIgnitionHealth && creeper.fireTicks > 0)
+            creeper.ignite()
     }
 }

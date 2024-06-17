@@ -2,3 +2,5 @@
 remove-arrow-chance: 100
 # Chance for the removed arrow to drop one flint (in percentage)
 drop-flint-chance: 80
+# At what health will the creeper automatically explode if set on fire (set to 0 to disable)
+creeper-ignition-health: 1
